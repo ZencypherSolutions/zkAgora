@@ -125,9 +125,8 @@ interface MaterialUIProviderProps {
 }
 
 export function MaterialUIProvider({ children }: MaterialUIProviderProps) {
-  // Use system preference as default
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  const [mode, setMode] = useState<'light' | 'dark'>(prefersDarkMode ? 'dark' : 'light');
+  // Lock to dark mode for now
+  const [mode, setMode] = useState<'light' | 'dark'>('dark');
   
   // Update the theme only if the mode changes
   const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
@@ -135,17 +134,18 @@ export function MaterialUIProvider({ children }: MaterialUIProviderProps) {
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
-        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+        // Keep dark mode when toggling for now
+        setMode('dark');
       },
       mode,
     }),
     [mode]
   );
 
-  // Synchronize with system preference changes
+  // Always use dark mode regardless of system preference
   useEffect(() => {
-    setMode(prefersDarkMode ? 'dark' : 'light');
-  }, [prefersDarkMode]);
+    setMode('dark');
+  }, []);
 
   return (
     <ColorModeContext.Provider value={colorMode}>
