@@ -109,6 +109,32 @@ const sampleDatasets: DatasetCardProps[] = [
     price: 199,
     isFree: false,
   },
+  {
+    id: '5',
+    title: 'Educational Performance Analytics',
+    description: 'Anonymized student performance data across multiple educational institutions with zero-knowledge proofs to protect student identities while enabling academic research on learning patterns.',
+    provider: {
+      name: 'EduResearch Consortium',
+      avatar: '/avatars/eduresearch.png',
+      verified: true,
+    },
+    previewImage: '/dataset-previews/education.png',
+    verifications: [
+      { type: 'identity', verified: true },
+      { type: 'integrity', verified: true },
+      { type: 'privacy', verified: true },
+      { type: 'compliance', verified: true },
+    ],
+    stats: {
+      size: '750 MB',
+      format: 'CSV, JSON, Parquet',
+      lastUpdated: 'August 12, 2023',
+      records: 180000,
+    },
+    tags: ['education', 'academic', 'performance', 'anonymized', 'research'],
+    price: 149,
+    isFree: false,
+  },
 ];
 
 interface DatasetListProps {
@@ -132,12 +158,13 @@ export function DatasetList({ title = "Available Datasets", description }: Datas
         </Box>
       )}
       
-      <Box sx={{ display: 'grid', gap: 3, 
+      <Box sx={{ display: 'grid', gap: 4, 
         gridTemplateColumns: {
           xs: '1fr',
           sm: 'repeat(2, 1fr)',
-          md: 'repeat(3, 1fr)',
-          lg: 'repeat(4, 1fr)'
+          md: 'repeat(2, 1fr)',
+          lg: 'repeat(3, 1fr)',
+          xl: 'repeat(3, 1fr)'
         }
       }}>
         {sampleDatasets.map(dataset => (

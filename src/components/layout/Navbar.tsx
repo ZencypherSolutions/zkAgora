@@ -37,7 +37,7 @@ export function Navbar() {
             sx={{ flexGrow: 1, fontWeight: 'bold', cursor: 'pointer' }}
           >
             <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-              ZK Dataset Marketplace
+              ZK AGORA
             </Link>
           </Typography>
 
@@ -54,7 +54,7 @@ export function Navbar() {
               aria-label="Toggle color mode"
               sx={{ ml: 1 }}
             >
-              {isDarkMode ? <SunIcon /> : <MoonIcon />}
+              <SunIcon />
             </IconButton>
           </Box>
         </Toolbar>

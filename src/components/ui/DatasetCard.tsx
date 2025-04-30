@@ -88,7 +88,8 @@ export function DatasetCard({
     <Card 
       sx={{ 
         width: '100%',
-        height: expanded ? 'auto' : 500, 
+        height: expanded ? 'auto' : '520px',
+        minHeight: expanded ? 'auto' : '520px',
         display: 'flex',
         flexDirection: 'column',
         transition: 'transform 0.2s, box-shadow 0.2s',
@@ -106,6 +107,8 @@ export function DatasetCard({
             sx={{ 
               height: 160, 
               width: '100%',
+              minHeight: 160,
+              maxHeight: 160,
               bgcolor: theme.palette.mode === 'dark' ? 'primary.dark' : 'primary.light',
               borderTopLeftRadius: 8,
               borderTopRightRadius: 8,
@@ -130,6 +133,9 @@ export function DatasetCard({
             onError={handleImageError}
             sx={{ 
               width: '100%',
+              height: 160,
+              minHeight: 160,
+              maxHeight: 160,
               objectFit: 'cover',
               borderTopLeftRadius: 8,
               borderTopRightRadius: 8
@@ -156,7 +162,8 @@ export function DatasetCard({
         flexGrow: 1, 
         display: 'flex', 
         flexDirection: 'column',
-        width: '100%'
+        width: '100%',
+        px: { xs: 2, sm: 3 }
       }}>
         <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
           <Avatar 
@@ -174,17 +181,29 @@ export function DatasetCard({
           )}
         </Box>
 
-        <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 'bold' }}>
+        <Typography variant="h6" component="h2" gutterBottom sx={{ 
+          fontWeight: 'bold',
+          minHeight: 56,
+          maxHeight: 56,
+          lineHeight: 1.3,
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          display: '-webkit-box',
+          WebkitLineClamp: 2,
+          WebkitBoxOrient: 'vertical',
+        }}>
           {title}
         </Typography>
 
         <Typography variant="body2" color="text.secondary" sx={{ 
           mb: 2,
           display: '-webkit-box',
-          WebkitLineClamp: 2,
+          WebkitLineClamp: 3,
           WebkitBoxOrient: 'vertical',
           overflow: 'hidden',
-          textOverflow: 'ellipsis'
+          textOverflow: 'ellipsis',
+          minHeight: 60,
+          maxHeight: 60,
         }}>
           {description}
         </Typography>
@@ -207,32 +226,32 @@ export function DatasetCard({
           ))}
         </Stack>
 
-        <Grid container spacing={2} sx={{ mb: 2 }}>
-          <Grid sx={{ gridColumn: 'span 4' }}>
+        <Box sx={{ display: 'grid', gap: 2, gridTemplateColumns: 'repeat(3, 1fr)', mb: 2 }}>
+          <Box>
             <Typography variant="caption" color="text.secondary" display="block">
               Size
             </Typography>
-            <Typography variant="body2" fontWeight="medium">
+            <Typography variant="body2" fontWeight="medium" sx={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
               {stats.size}
             </Typography>
-          </Grid>
-          <Grid sx={{ gridColumn: 'span 4' }}>
+          </Box>
+          <Box>
             <Typography variant="caption" color="text.secondary" display="block">
               Format
             </Typography>
-            <Typography variant="body2" fontWeight="medium">
+            <Typography variant="body2" fontWeight="medium" sx={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
               {stats.format}
             </Typography>
-          </Grid>
-          <Grid sx={{ gridColumn: 'span 4' }}>
+          </Box>
+          <Box>
             <Typography variant="caption" color="text.secondary" display="block">
               Records
             </Typography>
-            <Typography variant="body2" fontWeight="medium">
+            <Typography variant="body2" fontWeight="medium" sx={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
               {stats.records.toLocaleString()}
             </Typography>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
 
         <Box sx={{ 
           display: 'flex', 
