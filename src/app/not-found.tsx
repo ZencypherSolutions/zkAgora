@@ -4,14 +4,6 @@ import { Box, Container, Typography, Button, useTheme, Paper } from '@mui/materi
 import { MainLayout } from '../components/layout/MainLayout';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import ScienceIcon from '@mui/icons-material/Science';
-import { keyframes } from '@mui/system';
-
-// Subtle pulse animation
-const pulsate = keyframes`
-  0% { opacity: 0.9; }
-  50% { opacity: 1; }
-  100% { opacity: 0.9; }
-`;
 
 export default function NotFound() {
   const theme = useTheme();
@@ -86,7 +78,7 @@ export default function NotFound() {
                 : 'rgba(255, 255, 255, 0.9)',
               backdropFilter: 'blur(5px)',
               zIndex: 2,
-              transition: 'all 0.3s ease',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
               '&:hover': {
                 boxShadow: '0 0 20px rgba(0,0,0,0.05)'
               }
@@ -104,7 +96,7 @@ export default function NotFound() {
                 color="primary" 
                 sx={{ 
                   fontSize: 70,
-                  animation: `${pulsate} 4s infinite ease-in-out`
+                  opacity: 0.95
                 }} 
               />
               <ScienceIcon 
@@ -166,7 +158,7 @@ export default function NotFound() {
                 borderRadius: 1.5,
                 px: 4,
                 py: 1,
-                transition: 'all 0.2s ease',
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
                 '&:hover': {
                   transform: 'translateY(-2px)',
                   boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
